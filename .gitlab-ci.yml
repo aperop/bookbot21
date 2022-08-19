@@ -1,5 +1,6 @@
 stages:
     - move
+    - pip_install
     - install_packages
 build_bot:
     stage: move
@@ -8,9 +9,18 @@ build_bot:
     script:
        - cd src/
 
+pip:
+  stage: pip_install
+  tags:
+    - don
+  script:
+    - sudo apt-get install python3-pip
+
 packages:
    stage: install_packages
    tags:
      - don
    script:
        - python3 -m pip install -r requirements.txt
+
+
