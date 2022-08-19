@@ -41,6 +41,8 @@
 *.idb
 *.pdb
 
+*/__pycache__
+*.pyc
 venv
 
 # Kernel Module Compile Results
