@@ -14,7 +14,7 @@ class DatabaseBot:
 
     def sql_create_users(self):
         if self.base:
-            print("Data base connected OK!")
+            print("Data base: table users connected OK!")
             self.cur.execute(
                 """CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY,            
                                                     login VARCHAR(20),
@@ -26,7 +26,7 @@ class DatabaseBot:
 
     def sql_create_booking(self):
         if self.base:
-            print("Data base connected OK!")
+            print("Data base: table booking connected OK!")
             self.cur.execute(
                 """CREATE TABLE IF NOT EXISTS booking ( id INTEGER PRIMARY KEY AUTOINCREMENT,
                                                         date DATE,
@@ -42,7 +42,7 @@ class DatabaseBot:
 
     def sql_create_objects(self):
         if self.base:
-            print("Data base connected OK!")
+            print("Data base: table objects connected OK!")
             self.cur.execute(
                 """CREATE TABLE IF NOT EXISTS objects ( id INTEGER PRIMARY KEY AUTOINCREMENT,
                                                         name VARCHAR(30),
@@ -66,7 +66,6 @@ class DatabaseBot:
 
     async def sql_add_objects(self, state):
         async with state.proxy() as data:
-            print(tuple(data.values()))
             self.cur.execute('''INSERT INTO objects (name, type, description, campus, floor, number_of_the_room, image)
                                 VALUES(?, ?, ?, ?, ?, ?, ?);''', (tuple(data.values())))
             self.base.commit()
@@ -83,7 +82,6 @@ class DatabaseBot:
                                     On objects.id=booking.object_id
                                     WHERE booking.user_id=? AND booking.status=(?)''', (user_id, 1,)
                                ).fetchall()
-        print(lst)
         if len(lst) == 0:
             await bot.send_message(user_id, "У вас еще нету броней ")
 
@@ -109,7 +107,6 @@ class DatabaseBot:
                                  reply_markup=create_button(ret[11]))
 
     async def sql_check_booking(self, date, object_id):
-        print(date, object_id, type(date), type(object_id))
         ret = self.cur.execute('''  SELECT booking.start_time, booking.end_time
                                     FROM booking
                                     WHERE booking.date=? AND status=1 AND object_id=?''', (date, object_id,)
@@ -127,13 +124,11 @@ class DatabaseBot:
         return ret
 
     async def sql_list_object(self, type_name):
-        print("id", id)
         ret = self.cur.execute('''  SELECT DISTINCT id, name
                                     FROM objects
                                     WHERE type=?
                                     ''', (type_name, )
                                ).fetchall()
-        print(ret)
         return ret
 
     async def sql_cancel_booking(self, booking_id):
@@ -162,7 +157,6 @@ class DatabaseBot:
         return ret
 
     async def sql_booking(self, data) -> bool:
-        print("This is date>>>>> ", data)
         ret = self.cur.execute('''  SELECT objects.id
                                     FROM objects
                                     JOIN users

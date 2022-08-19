@@ -116,7 +116,6 @@ class BaseCommands:
             count += 1
             pasword = message.text
             data = await state.get_data()
-            print(data)
             if pasword == ADM_PASSWORD and data['user_role'] == 'adm':
                 await Registration.next()
                 count = 0
@@ -169,8 +168,6 @@ class BaseCommands:
         #                        photo=photo)
         await bot.send_message(message.from_user.id, "Добро пожаловать!\nЗдесь вы можите оформить бронь",
                                reply_markup=keyboards_menu)
-
-
         await message.delete()
 
     @staticmethod
@@ -189,14 +186,20 @@ class BaseCommands:
         await callback.message.delete()
 
     @staticmethod
-    async def cmd_help(message: types.Message):
-        ret = await user_db.sql_user_info(message.from_user.id)
-        login, role, campus = ret[0]
-        await message.answer(f"\ntg: @{message.from_user.username}"
-                             f"\nID: {message.from_user.id}"
-                             f"\nЛогин: {login}"
-                             f"\nРоль: {role}"
-                             f"\nКампус: {campus}")
+    async def cmd_my_self(message: types.Message):
+        check = await user_db.check_registration(message.from_user.id)
+        if not check:
+            await message.answer("Пройдите регистрацию для получения  информации")
+            await bot.send_sticker(message.from_user.id,
+                               sticker="CAACAgIAAxkBAAENnVli__hWmaC7OjLLpkNXNxRxTOdcnwACnwcAAmMr4gnSznx_gKZbQSkE")
+        else:
+            ret = await user_db.sql_user_info(message.from_user.id)
+            login, role, campus = ret[0]
+            await message.answer(f"\ntg: @{message.from_user.username}"
+                                 f"\nID: {message.from_user.id}"
+                                 f"\nЛогин: {login}"
+                                 f"\nРоль: {role}"
+                                 f"\nКампус: {campus}")
 
     @staticmethod
     async def cmd_information(message: types.Message):
@@ -229,6 +232,6 @@ class BaseCommands:
         self.dp.register_message_handler(self.check_choice_city, state=Registration.campus_name, content_types=[ContentType.ANY])
         self.dp.register_message_handler(self.cmd_show, commands=["show"], content_types=[ContentType.ANY])
         self.dp.register_message_handler(self.cmd_my, lambda message: "Мои брони 📝" in message.text)
-        self.dp.register_message_handler(self.cmd_help, lambda message: "О себе 🆘" in message.text)
+        self.dp.register_message_handler(self.cmd_my_self, lambda message: "О себе 🆘" in message.text)
         self.dp.register_message_handler(self.cmd_information, lambda message: "Информация ⚠" in message.text)
         self.dp.register_callback_query_handler(self.delete_booking, filter_drop_booking.filter(action="bye_booking"))

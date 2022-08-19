@@ -140,7 +140,6 @@ class Booking:
         end_time = callback_data['last_time']
         async with state.proxy() as data:
             data = tuple(data.values())
-        print("callback_data", callback_data)
         data = (*data, date, start_time, end_time)
         query = await user_db.sql_booking(data)
         await state.finish()
