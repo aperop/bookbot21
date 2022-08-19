@@ -1,19 +1,9 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.callback_data import CallbackData
-# from src.databases.init_database import user_db
 
 
 filter_list = CallbackData('type', 'action', 'id')
 
-
-# async def type_list():
-#     res = await user_db.sql_object_name()
-#     return res
-#
-#
-# async def object_list(type_name):
-#     lis_of_type_name = await user_db.sql_list_object(type_name)
-#     return lis_of_type_name
 
 def check_rule(rule, list_types):
     if rule[0] == 'student':
@@ -40,7 +30,6 @@ async def inline_type_list(user_db, id):
                                                                   id=type_name[0]))
         row_button.append([line, ])
     return InlineKeyboardMarkup(inline_keyboard=row_button), ret
-
 
 
 async def inline_object_list(user_db, type_name):
