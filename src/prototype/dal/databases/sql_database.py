@@ -1,8 +1,8 @@
 import sqlite3 as sq
 
 
-from src.prototype.basicui.keyboards.inline_kb import create_button
-from src.prototype.kernel.create_bot import bot
+from prototype.basicui.keyboards.inline_kb import create_button
+from prototype.kernel.create_bot import bot
 
 
 

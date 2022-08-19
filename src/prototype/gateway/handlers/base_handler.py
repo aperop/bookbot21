@@ -1,4 +1,4 @@
-from src.prototype.kernel.create_bot import dp
+from prototype.kernel.create_bot import dp
 
 
 class BaseHandler:

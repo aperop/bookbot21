@@ -1,14 +1,14 @@
-from src.prototype.kernel.create_bot import bot
+from prototype.kernel.create_bot import bot
 from aiogram.types import ContentType
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
-from src.prototype.dal.databases.init_database import user_db
-from src.prototype.basicui.keyboards.inline_kb import filter_drop_booking
-from src.prototype.basicui.keyboards.inline_kb import city_markup, users_markup
+from prototype.dal.databases.init_database import user_db
+from prototype.basicui.keyboards.inline_kb import filter_drop_booking
+from prototype.basicui.keyboards.inline_kb import city_markup, users_markup
 from aiogram.dispatcher.filters.state import State, StatesGroup
-from src.prototype.basicui.keyboards.system_kb import keyboards_menu, back_menu_keyboard
-from src.prototype.kernel.config import ADM_PASSWORD, STUDENT_PASSWORD, INTENSIVIST_PASSWORD
+from prototype.basicui.keyboards.system_kb import keyboards_menu, back_menu_keyboard
+from prototype.kernel.config import ADM_PASSWORD, STUDENT_PASSWORD, INTENSIVIST_PASSWORD
 
 
 count = 0

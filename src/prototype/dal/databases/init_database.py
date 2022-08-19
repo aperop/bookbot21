@@ -1,4 +1,4 @@
-from src.prototype.dal.databases.sql_database import DatabaseBot
+from prototype.dal.databases.sql_database import DatabaseBot
 
 user_db = DatabaseBot("test.db") #test1.db
 user_db.sql_create_users()

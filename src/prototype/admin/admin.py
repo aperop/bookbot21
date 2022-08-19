@@ -1,12 +1,12 @@
-from src.prototype.kernel.create_bot import bot
+from prototype.kernel.create_bot import bot
 from aiogram import types
 from aiogram.types import ContentType
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import Text
-from src.prototype.dal.databases.init_database import user_db
+from prototype.dal.databases.init_database import user_db
 from aiogram.dispatcher.filters.state import State, StatesGroup
-from src.prototype.basicui.keyboards.inline_kb import city_markup, objects_markup
-from src.prototype.basicui.keyboards.system_kb import back_menu_keyboard, keyboards_menu
+from prototype.basicui.keyboards.inline_kb import city_markup, objects_markup
+from prototype.basicui.keyboards.system_kb import back_menu_keyboard, keyboards_menu
 
 
 class AdmRoot(StatesGroup):

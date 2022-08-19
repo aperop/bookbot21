@@ -1,6 +1,6 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.callback_data import CallbackData
-from src.prototype.admin.admin import user_db
+from prototype.admin.admin import user_db
 
 filter_list_time = CallbackData('time', 'type', 'date', 'first_time', 'last_time')
 
