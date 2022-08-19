@@ -1,0 +1,10 @@
+stages:
+    - build
+
+build_bot:
+    stage: build
+    tags:
+        - don
+    script:
+        cd src/
+        python3 main.py
