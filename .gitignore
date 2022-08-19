@@ -41,6 +41,8 @@
 *.idb
 *.pdb
 
+venv
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
