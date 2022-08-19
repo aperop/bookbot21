@@ -1,2 +1,2 @@
-print("Passed")
+printPassed")
 print("ok")
