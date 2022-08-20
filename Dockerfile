@@ -5,11 +5,13 @@ WORKDIR /app/
 RUN apt-get -y upgrade
 RUN apt-get -y update
 
-COPY . .
-
 RUN python3 -m pip install -U pip
 
+COPY src/requirements.txt src/requirements.txt
+
 RUN pip3 install -Ur src/requirements.txt
+
+COPY . .
 
 WORKDIR /app/src
 

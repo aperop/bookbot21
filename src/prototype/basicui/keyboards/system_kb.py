@@ -5,7 +5,7 @@ information_button = KeyboardButton('Информация ⚠️')
 registration_button = KeyboardButton('Регистрация 🔐')
 booking_button = KeyboardButton('Бронирование ✅')
 my_bookings_button = KeyboardButton('Мои брони 📝')
-admin_button = KeyboardButton('Добавление 👨🏻‍💻')
+admin_button = KeyboardButton('Добавить объект 👨🏻‍💻')
 keyboards_menu = ReplyKeyboardMarkup(resize_keyboard=True)
 
 

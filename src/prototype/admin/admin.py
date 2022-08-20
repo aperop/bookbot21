@@ -74,12 +74,12 @@ class Admin:
         async with state.proxy() as data:
             data['description'] = message.text
             await AdmRoot.next()
-            await message.answer("Введите кампус!", reply_markup=city_markup)
+            await message.answer("Выберите кампус!", reply_markup=city_markup)
 
     @staticmethod
     async def check_description(message: types.Message):
         await message.delete()
-        await message.answer("Описание нужно написать  текстом!")
+        await message.answer("Описание нужно написать текстом!")
         await bot.send_sticker(message.from_user.id,
                                sticker="CAACAgIAAxkBAAENm11i_0WUEosLLgLt0thPR5z5pRr3ggACoQcAAmMr4gm9FrBamSBazCkE")
 
@@ -99,7 +99,7 @@ class Admin:
             async with state.proxy() as data:
                 data['floor'] = message.text
                 await AdmRoot.next()
-                await message.answer("Введите номер кабинета!")
+                await message.answer("Введите местоположение объекта!")
         else:
             await AdmRoot.floor.set()
             await message.answer("Введите этаж цифрами!")
@@ -109,7 +109,7 @@ class Admin:
     @staticmethod
     async def check_choice_floor(message: types.Message):
         await message.delete()
-        await message.answer("Номер этажа нужно прописать здесь Числом")
+        await message.answer("Номер этажа нужно прописать здесь числом")
         await bot.send_sticker(message.from_user.id,
                                sticker="CAACAgIAAxkBAAENm11i_0WUEosLLgLt0thPR5z5pRr3ggACoQcAAmMr4gm9FrBamSBazCkE")
 
@@ -132,7 +132,7 @@ class Admin:
         async with state.proxy() as data:
             data['photo'] = message.photo[0].file_id
         await user_db.sql_add_objects(state)
-        await message.answer("Вы успешно добавили!!!", reply_markup=keyboards_menu)
+        await message.answer("Вы успешно добавили объект!!!", reply_markup=keyboards_menu)
         await state.finish()
 
     @staticmethod
@@ -143,7 +143,7 @@ class Admin:
                                sticker="CAACAgIAAxkBAAENm9Ri_2aFMnJj4vxwaLujBxQ8LYZzGQAChAIAAladvQpjOAcDbi3AuikE")
 
     def register_handlers_adm(self):
-        self.dp.register_message_handler(self.cmd_add, lambda message: 'Добавление 👨🏻‍💻' in message.text, state=None)
+        self.dp.register_message_handler(self.cmd_add, lambda message: 'Добавить объект 👨🏻‍💻' in message.text, state=None)
         self.dp.register_message_handler(self.adm_answer_1, state=AdmRoot.name_for_object)
         self.dp.register_message_handler(self.check_text_name_for_object, state=[AdmRoot.name_for_object],
                                          content_types=[ContentType.ANY])

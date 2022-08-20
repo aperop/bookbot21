@@ -10,24 +10,24 @@ async def time_list(date, object_id, first=True):
     res_list = []
 
     for start, finish in res:
-        start_h, start_m = map(int, start.split('_'))
-        finish_h, finish_m = map(int, finish.split('_'))
+        start_h, start_m = map(int, start.split('.'))
+        finish_h, finish_m = map(int, finish.split('.'))
 
         line_list = []
         for h in range(start_h, finish_h + 1):
             if h == start_h:
                 if h == finish_h:
                     for m in range(start_m, finish_m + 15, 15):
-                        line_list.append(f'{h}_{m:0<2}')
+                        line_list.append(f'{h}.{m:0<2}')
                 else:
                     for m in range(start_m, 60, 15):
-                        line_list.append(f'{h}_{m:0<2}')
+                        line_list.append(f'{h}.{m:0<2}')
             elif h == finish_h:
                 for m in range(0, finish_m + 15, 15):
-                    line_list.append(f'{h}_{m:0<2}')
+                    line_list.append(f'{h}.{m:0<2}')
             else:
                 for m in range(0, 60, 15):
-                    line_list.append(f'{h}_{m:0<2}')
+                    line_list.append(f'{h}.{m:0<2}')
 
         if first:
             line_list = line_list[:-1]
@@ -41,7 +41,7 @@ async def time_list(date, object_id, first=True):
 async def get_time(date, object_id, start_time=None):
     if start_time is not None:
         t_list = await time_list(date, object_id, first=False)
-        start_hour, start_minute = map(int, start_time.split('_'))
+        start_hour, start_minute = map(int, start_time.split('.'))
         start_minute += 15
     else:
         t_list = await time_list(date, object_id)
@@ -50,7 +50,7 @@ async def get_time(date, object_id, start_time=None):
     list_time = []
     for hour in range(start_hour, 24):
         for minute in range(start_minute, 60, 15):
-            list_time.append(f'{hour}_{minute:0<2}')
+            list_time.append(f'{hour}.{minute:0<2}')
         start_minute = 0
 
     line = []
@@ -61,8 +61,8 @@ async def get_time(date, object_id, start_time=None):
             if start_time is not None:
                 flag = True
                 break
-            line.append(InlineKeyboardButton(text='_',
-                                             callback_data='_'))
+            line.append(InlineKeyboardButton(text='.',
+                                             callback_data='.'))
         else:
             print("IN inline", object_id)
             line.append(InlineKeyboardButton(text=str_time,
@@ -70,7 +70,7 @@ async def get_time(date, object_id, start_time=None):
                                                  type=('first' if start_time is None else 'last'),
                                                  date=date,
                                                  first_time=(str_time if start_time is None else start_time),
-                                                 last_time=(str_time if start_time is not None else '_'))
+                                                 last_time=(str_time if start_time is not None else '.'))
                                              )
                         )
 

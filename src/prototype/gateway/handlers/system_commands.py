@@ -71,7 +71,7 @@ class BaseCommands:
         async with state.proxy() as data:
             data['user_name'] = message.text
             await Registration.next()
-            await message.answer("Кто вы по жизни!", reply_markup=users_markup)
+            await message.answer("Выберите вашу роль!", reply_markup=users_markup)
 
     @staticmethod
     async def check_choice_login(message: types.Message):
@@ -98,7 +98,7 @@ class BaseCommands:
     @staticmethod
     async def check_choice_role(message: types.Message):
         await message.delete()
-        await message.answer("Я прошу тебя лишь  об одном нажми на кнопку ")
+        await message.answer("Я прошу тебя лишь об одном нажми на кнопку ")
         await bot.send_sticker(message.from_user.id,
                                sticker="CAACAgIAAxkBAAENm1hi_0U1efcDilnmrARFOO3lRh36JAACmQcAAmMr4gmx63jV6i42GSkE")
 
@@ -155,7 +155,7 @@ class BaseCommands:
     @staticmethod
     async def check_choice_city(message: types.Message):
         await message.delete()
-        await message.answer("Я прошу тебя лишь  об одном нажми на кнопку")
+        await message.answer("Я прошу тебя лишь об одном нажми на кнопку")
         await bot.send_sticker(message.from_user.id,
                                sticker="CAACAgIAAxkBAAENm1hi_0U1efcDilnmrARFOO3lRh36JAACmQcAAmMr4gmx63jV6i42GSkE")
 
@@ -166,7 +166,7 @@ class BaseCommands:
         # photo = open(abspath('../photo/title.png'), 'rb')
         # await bot.send_photo(message.from_user.id,
         #                        photo=photo)
-        await bot.send_message(message.from_user.id, "Добро пожаловать!\nЗдесь вы можите оформить бронь",
+        await bot.send_message(message.from_user.id, "Добро пожаловать!\nЗдесь вы можете оформить бронь",
                                reply_markup=keyboards_menu)
         await message.delete()
 
@@ -189,7 +189,7 @@ class BaseCommands:
     async def cmd_my_self(message: types.Message):
         check = await user_db.check_registration(message.from_user.id)
         if not check:
-            await message.answer("Пройдите регистрацию для получения  информации")
+            await message.answer("Пройдите регистрацию для получения информации")
             await bot.send_sticker(message.from_user.id,
                                sticker="CAACAgIAAxkBAAENnVli__hWmaC7OjLLpkNXNxRxTOdcnwACnwcAAmMr4gnSznx_gKZbQSkE")
         else:
@@ -208,7 +208,7 @@ class BaseCommands:
                              "\nВ настоящий момент есть возможность забронировать")
         await message.answer_photo(
             "https://cdnstatic.rg.ru/uploads/images/gallery/cf7d1196/6_394ce4c8.jpg",
-            "ПЕРЕГОВОРКИ и КОНФЕРЕНЦ ЗАЛЫ"
+            "ПЕРЕГОВОРКИ и КОНФЕРЕНЦ-ЗАЛЫ"
         )
         await message.answer_photo(
             "https://zvetnoe.ru/upload/images/blog/063_Nastolnye_igry/1.jpg",

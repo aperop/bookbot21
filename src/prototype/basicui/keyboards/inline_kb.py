@@ -20,9 +20,9 @@ users_markup.add(adm_inline_button).add(student_inline_button).add(intensivist_i
 
 
 board_games_button = InlineKeyboardButton(text="Настольные игры 🎮 🎲♟", callback_data='object_Настольные игры')
-conference_room_button = InlineKeyboardButton(text="Переговорные 💼🕰", callback_data='object_Переговорные')
+conference_room_button = InlineKeyboardButton(text="Переговорные и конференц-залы 💼🕰", callback_data='object_Переговорные')
 sports_equipment_button = InlineKeyboardButton(text="Спортивный инвентарь 🏀🏓🎯", callback_data='object_Спортивный инвентарь')
-kitchen_room_button = InlineKeyboardButton(text="Кухня 🍽", callback_data="object_Кухня")
+kitchen_room_button = InlineKeyboardButton(text="Кухни 🍽", callback_data="object_Кухня")
 books_button = InlineKeyboardButton(text="Книги 📚", callback_data="object_Книги")
 objects_markup.add(board_games_button).add(conference_room_button).add(sports_equipment_button).add(kitchen_room_button).add(books_button)
 
@@ -36,10 +36,10 @@ def create_button(booking_id: int) -> InlineKeyboardMarkup:
     cancel_markup.add(cancle_booking)
     return cancel_markup
 
-
-kzn_inline_button = InlineKeyboardButton(text=" 🏯", callback_data='city_kzn')
-msk_inline_button = InlineKeyboardButton(text="Москва 🏭", callback_data='city_msk')
-nsk_inline_button = InlineKeyboardButton(text="Новосибирск 🏰", callback_data='city_nsk')
+#
+# kzn_inline_button = InlineKeyboardButton(text=" 🏯", callback_data='city_kzn')
+# msk_inline_button = InlineKeyboardButton(text="Москва 🏭", callback_data='city_msk')
+# nsk_inline_button = InlineKeyboardButton(text="Новосибирск 🏰", callback_data='city_nsk')
 
 # filter_list = CallbackData('type', 'action', 'id')
 

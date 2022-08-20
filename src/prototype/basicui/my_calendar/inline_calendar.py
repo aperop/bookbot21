@@ -24,33 +24,33 @@ async def get_date(date=None) -> InlineKeyboardMarkup:
 
     if date is None:
         dt = datetime.now()
-        date = dt.strftime("%Y_%m")
-    dt = datetime.strptime(date, "%Y_%m")
+        date = dt.strftime("%Y/%m")
+    dt = datetime.strptime(date, "%Y/%m")
 
     line_year = [
         InlineKeyboardButton(text='<',
                              callback_data=filter_list_date.new(type='refresh',
-                                                                date=(dt - relativedelta(years=1)).strftime("%Y_%m"))),
+                                                                date=(dt - relativedelta(years=1)).strftime("%Y/%m"))),
 
         InlineKeyboardButton(text=str(dt.year),
                              callback_data=str(dt.year)),
 
         InlineKeyboardButton(text='>',
                              callback_data=filter_list_date.new(type='refresh',
-                                                                date=(dt + relativedelta(years=1)).strftime("%Y_%m"))),
+                                                                date=(dt + relativedelta(years=1)).strftime("%Y/%m"))),
     ]
 
     line_mounth = [
         InlineKeyboardButton(text='<',
                              callback_data=filter_list_date.new(type='refresh',
-                                                                date=(dt - relativedelta(months=1)).strftime("%Y_%m"))),
+                                                                date=(dt - relativedelta(months=1)).strftime("%Y/%m"))),
 
         InlineKeyboardButton(text=cal_dict[dt.month],
                              callback_data=str(dt.month)),
 
         InlineKeyboardButton(text='>',
                              callback_data=filter_list_date.new(type='refresh',
-                                                                date=(dt + relativedelta(months=1)).strftime("%Y_%m"))),
+                                                                date=(dt + relativedelta(months=1)).strftime("%Y/%m"))),
     ]
 
     first_day = dt.weekday()
@@ -67,7 +67,7 @@ async def get_date(date=None) -> InlineKeyboardMarkup:
             year = dt.year
             line.append(InlineKeyboardButton(text=str(day),
                                              callback_data=filter_list_date.new(type='get_date',
-                                                                                date=f'{year}_{mount}_{day}')))
+                                                                                date=f'{day}/{mount}/{year}')))
         if len(line) == 7:
             res_list_inline_but.append(line)
             line = []

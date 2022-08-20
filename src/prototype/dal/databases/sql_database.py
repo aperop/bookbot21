@@ -87,23 +87,24 @@ class DatabaseBot:
 
         if full:
             for ret in iter(lst):
-                await bot.send_photo(user_id, ret[10], f'Мероприятие: {ret[9]}\n\t'
-                                                       f'Название объекта: {ret[2]}\n\t'
-                                                       f'Тип объекта: {ret[1]}\n\t'
-                                                       f'Кампус: {ret[3]}\n\t'
-                                                       f'Этаж: {ret[4]}\n\t'
-                                                       f'Номер комнаты: {ret[5]}\n\t'
-                                                       f'Время брнирования: {ret[6]} {ret[7]}-{ret[8]}\n',
+                await bot.send_photo(user_id, ret[10], f'Мероприятие: {ret[9]}\n'
+                                                       f'Название объекта: {ret[2]}\n'
+                                                       f'Тип объекта: {ret[1]}\n'
+                                                       f'Кампус: {ret[3]}\n'
+                                                       f'Этаж: {ret[4]}\n'
+                                                       f'Местоположение: {ret[5]}\n'
+                                                       f'Время бронирования: {ret[6]} {ret[7]}-{ret[8]}\n',
                                      reply_markup=create_button(ret[11]))
         else:
             ret = lst[-1]
-            await bot.send_photo(user_id, ret[10], f'Мероприятие: {ret[9]}\n\t'
-                                                   f'Название объекта: {ret[2]}\n\t'
-                                                   f'Тип объекта: {ret[1]}\n\t'
-                                                   f'Кампус: {ret[3]}\n\t'
-                                                   f'Этаж: {ret[4]}\n\t'
-                                                   f'Номер комнаты: {ret[5]}\n\t'
-                                                   f'Время брнирования: {ret[6]} {ret[7]}-{ret[8]}\n',
+            await bot.send_photo(user_id, ret[10], f'Мероприятие: {ret[9]}\n'
+                                                   f'Название объекта: {ret[2]}\n'
+                                                   f'Тип объекта: {ret[1]}\n'
+                                                   f'Кампус: {ret[3]}\n'
+                                                   f'Этаж: {ret[4]}\n'
+                                                   f'Местоположение: {ret[5]}\n'
+                                                   f'Дата бронирования: {ret[6]}\n'
+                                                   f'Время бронирования: {ret[7]}-{ret[8]}\n',
                                  reply_markup=create_button(ret[11]))
 
     async def sql_check_booking(self, date, object_id):
