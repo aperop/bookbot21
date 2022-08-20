@@ -13,4 +13,4 @@ RUN pip3 install -Ur src/requirements.txt
 
 EXPOSE 8081/tcp 8082/tcp
 
-#CMD [ "python", "./src/prototype/kernel/main.py" ]
+CMD [ "python", "./src/main.py" ]
