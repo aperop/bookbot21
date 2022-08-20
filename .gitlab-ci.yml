@@ -1,12 +1,21 @@
 stages:
     - move
     - build
+    - aiogram
 build_bot:
     stage: move
     tags:
         - don
     script:
        - cd src/
+
+imports:
+    stage: aiogram
+    tags:
+      - don
+    script:
+      - cd src/
+      - python3 -m pip install -r requirements.txt
 
 packages:
    stage: build
