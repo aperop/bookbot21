@@ -49,7 +49,7 @@ class Admin:
     async def check_text_name_for_object(message: types.Message):
         if message.content_type != 'text':
             await message.delete()
-            await message.answer("Введите имя нормальным текстом 📝!")
+            await message.answer("Введите название объекта текстом 📝!")
             await bot.send_sticker(message.from_user.id,
                                    sticker="CAACAgIAAxkBAAENm2di_0hRuQh_CEYY4vCtbwzpbMw_BQACcQgAAoSUQUlvaAkaprvOcykE")
 
