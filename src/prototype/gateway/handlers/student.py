@@ -6,8 +6,8 @@ from aiogram.dispatcher.filters import Text
 from prototype.dal.databases.init_database import user_db
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from prototype.basicui.keyboards.system_kb import back_menu_keyboard, keyboards_menu
-from my_calendar.inline_calendar import get_date, filter_list_date
-from my_calendar.inline_time_list import get_time, filter_list_time
+from prototype.basicui.my_calendar.inline_calendar import get_date, filter_list_date
+from prototype.basicui.my_calendar.inline_time_list import get_time, filter_list_time
 from prototype.basicui.keyboards.inline_generation import filter_list, inline_type_list, inline_object_list
 
 
