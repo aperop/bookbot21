@@ -13,6 +13,7 @@ packages:
    tags:
      - don
    script:
+       - pwd
        - python3 main.py
 
 
