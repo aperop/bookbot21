@@ -9,7 +9,7 @@ build_bot:
        - cd src/
 
 import:
-    stage: aiogram
+    stage: build
     tags:
       - don
     script:
