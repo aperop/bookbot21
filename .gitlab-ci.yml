@@ -1,7 +1,6 @@
 stages:
     - move
     - build
-    - aiogram
 build_bot:
     stage: move
     tags:
@@ -19,13 +18,5 @@ import:
       - python3 -m pip install -r requirements.txt
       - pip freeze
 
-packages:
-   stage: build
-   tags:
-     - don
-   script:
-       - cd src/
-       - pip freeze
-       - python3 main.py
 
 
