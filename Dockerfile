@@ -15,6 +15,4 @@ COPY . .
 
 WORKDIR /app/src
 
-EXPOSE 8081/tcp 8082/tcp
-
 CMD [ "python", "main.py" ]

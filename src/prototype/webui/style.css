@@ -44,12 +44,3 @@ body {
 .usercard {
 	text-align: center;
 }
-
-/*
-var(--tg-theme-bg-color)
-var(--tg-theme-text-color)
-var(--tg-theme-hint-color)
-var(--tg-theme-link-color)
-var(--tg-theme-button-color)
-var(--tg-theme-button-text-color)
-*/

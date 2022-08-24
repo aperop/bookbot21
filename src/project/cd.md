@@ -1,4 +1,0 @@
-# CD
-- Riwive
-- Staging
-- Production
